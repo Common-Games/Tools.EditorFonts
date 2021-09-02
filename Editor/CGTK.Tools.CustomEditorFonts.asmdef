@@ -1,7 +1,9 @@
 {
     "name": "CGTK.Tools.CustomEditorFonts",
     "rootNamespace": "CGTK.Tools.CustomEditorFonts",
-    "references": [],
+    "references": [
+        "Unity.Settings.Editor"
+    ],
     "includePlatforms": [
         "Editor"
     ],
