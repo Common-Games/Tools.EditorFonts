@@ -93,12 +93,45 @@ namespace CGTK.Tools.CustomEditorFonts.Editor
             
                 if (GUILayout.Button(text: "Apply", style: __buttonStyle))
                 {
-                    
+                    SetEditorFont(font: CustomEditorFont);
                 }
             }
             EditorGUILayout.EndHorizontal();
         }
+        
+        public static void SetEditorFont(in Font font)
+        {
+            const BindingFlags __FLAGS = BindingFlags.Static | BindingFlags.Public | BindingFlags.GetProperty;
+            
+            IEnumerable<PropertyInfo> __editorStyleProperties = typeof(EditorStyles).GetProperties(bindingAttr: __FLAGS)
+                .Where(predicate: property => property.PropertyType == typeof(GUIStyle));
+            
+            IEnumerable<PropertyInfo> __guiSkinProperties     = GUI.skin.GetType().GetProperties()
+                .Where(predicate: property => property.PropertyType == typeof(GUIStyle));
 
+            foreach (PropertyInfo __property in __editorStyleProperties)
+            {
+                GUIStyle __style = (GUIStyle)__property.GetValue(obj: null, index: null);
+                __style.font = font;
+            }
+
+            foreach (PropertyInfo __property in __guiSkinProperties)
+            {
+                GUIStyle __style = (GUIStyle)__property.GetValue(obj: GUI.skin, index: null);
+                __style.font = font;
+            }
+
+            foreach (GUIStyle __style in GUI.skin.customStyles)
+            {
+                __style.font = font;
+            }
+
+            foreach (EditorWindow __window in Resources.FindObjectsOfTypeAll<EditorWindow>())
+            {
+                __window.Repaint();   
+            }
+        }
+        
         #endregion
     }
 }
