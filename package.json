@@ -1,0 +1,31 @@
+{
+  "name": "com.common-games.tools.custom-editor-fonts",
+  "displayName": "CGTK.Tools.CustomEditorFonts",
+  "version": "1.0.0",
+  "unity": "2020.3",
+  "description": "Allows you to change Unity's font, that's all.",
+  "keywords": [
+    "unity",
+    "unity3d",
+    "upm",
+    "common-games",
+    "tool"
+  ],
+  "homepage": "https://github.com/Common-Games/Tools.CustomEditorFonts",
+  "bugs": {
+    "url": "https://github.com/Common-Games/Tools.CustomEditorFonts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/common-games/Tools.CustomEditorFonts.git"
+  },
+  "license": "The Unlicense",
+  "author": "Common-Games (https://github.com/Common-Games)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "tools",
+  "dependencies": {
+    "com.unity.settings-manager": "1.0.3"
+  }
+}
